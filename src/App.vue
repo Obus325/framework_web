@@ -1,14 +1,20 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import Facts from './Components/Facts.vue';
+import { RouterLink, RouterView} from 'vue-router'
+import { useRouter } from 'vue-router';
 
-
+const router = useRouter()
+const routes = router.getRoutes()
+console.log(routes)
 </script>
 
 <template>
-  <RouterLink to="/">main</RouterLink>
-  <RouterView/>
+  <div v-for="route in routes">
+    <RouterLink :to=route.path>{{route.path}}</RouterLink>
+  </div>
+  <RouterView />
+
 </template>
 
-<style scoped>
 
-</style>
+

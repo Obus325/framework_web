@@ -1,13 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router"
-import HomePage from "./Components/HomePage.vue"
+import { routes } from 'vue-router/auto-routes'
 
-const routes = [
-    {path: '/', name: 'HomePage', component: HomePage},
-]
-
-const router = createRouter ({
-    history : createWebHistory(),
+const router = createRouter({
+    // createWebHistory() = mode "history" (URLs propres sans #)
+    history: createWebHistory(),
+  
+    // Les routes sont générées automatiquement par unplugin-vue-router
+    // basé sur la structure des fichiers dans src/pages/
+    // Exemple :
+    //   src/pages/index.vue       → route "/"
+    //   src/pages/about.vue       → route "/about"
+    //   src/pages/users/[id].vue  → route "/users/:id" (param dynamique)
     routes,
-})
-
-export default router;
+  })
+  
+  export default router

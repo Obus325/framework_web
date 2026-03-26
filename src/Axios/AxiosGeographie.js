@@ -1,8 +1,8 @@
 import  axios  from 'axios';
 
 const APIFacts = axios.create({
-    baseURL: 'https://uselessfacts.jsph.pl/api/v2/facts',
-    timeout: 5000,
+    baseURL: 'https://borderly.dev',
+    timeout: 2000,
     //headers: {Accept: text/plain}, 
 });
 
