@@ -13,9 +13,10 @@ export default defineConfig({
       routesFolder: [
         {
           src: 'src/Components',
+          //exclude: (excluded) => excluded,
           /*path: '',
           // override globals
-          exclude: (excluded) => excluded,
+          
           filePatterns: (filePatterns) => filePatterns,
           extensions: (extensions) => extensions,*/
         },
@@ -28,7 +29,7 @@ export default defineConfig({
       //filePatterns: ['**/*'],
 
       // files to exclude from the scan
-      //exclude: [],
+      //exclude: [Response.vue],
 
     }),
     vue(),

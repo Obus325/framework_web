@@ -4,26 +4,30 @@ import APIFacts from '@/Axios/AxiosJokes';
 
     
     const joke = ref()
+    const singlepart = ref()
 
     const fetchJokes = async () => {
     try {
-        // console.log("start");
         const response = await APIFacts.get(`/joke/Any`);
-        //console.log(response);
         joke.value = response.data;
-        //console.log(fact.value);
+        singlepart.value = joke.value.type == "single";
+
     }catch (error) {
         console.error('Error fetching list:', error);
     }}
-
-
-    // console.log("test")
     fetchJokes();
 </script>
 
 <template>
-    joke
-    {{ joke }}
+    <br>
+    <div v-if="singlepart">
+        {{joke.joke}}
+    </div>
+    <div v-else>
+        {{ joke.setup }}
+        <br>
+        {{ joke.delivery }}
+    </div>
 </template>
 
 <style scoped>
