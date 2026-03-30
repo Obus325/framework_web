@@ -1,7 +1,7 @@
 import  axios  from 'axios';
 
 const APIFacts = axios.create({
-    baseURL: 'https://borderly.dev',
+    baseURL: 'https://shadify.yurace.pro/api/countries',
     timeout: 2000,
     //headers: {Accept: text/plain}, 
 });

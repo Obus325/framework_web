@@ -1,46 +1,61 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, defineEmits } from 'vue';
+import { usePointsStore } from '@/store';
 import APIFacts from '@/Axios/AxiosGeographie';
+import Response from '@/response.vue';
+
 
 const flag = ref()
 const pays = ref()
-const latitude = ref()
-const longitude = ref()
-const info = ref()
-const forme = ref()
 
+const reponse = ref("");
+const correct = ref()
+
+
+const store = usePointsStore();
 
 const fetch = async () => {
 try {
     console.log("start");
-    const response = await APIFacts.get(`/api/geocode?lat=${latitude.value}&lng=${longitude.value}`);
+    const response = await APIFacts.get(`/country-quiz`);
     console.log(response)
-    info.value = response.data
-    console.log(info.value)
-    pays.value = info.value.country.iso2
-    flag.value = `https://borderly.dev/flag/wavy/${pays.value}.png`
+    flag.value = response.data.flag
+    pays.value = response.data.answer
+    
 }catch (error) {
     console.log('Error fetching list:', error);
-    latitude.value = (Math.random()*160) - 80
-    longitude.value = (Math.random()*360) - 180
-    fetch()
 }}
 
+const checkresponse = (response) => {
+    console.log(response)
+    reponse.value = response
+    if (response.toLowerCase() == pays.value.toLowerCase())
+    {
+        correct.value = true
+        store.addpoints()
+    }
+    else 
+    {
+        correct.value = false
+    }
+}
 
-
-latitude.value = (Math.random()*180) - 90
-longitude.value = (Math.random()*360) - 180
 fetch();
 </script>
 
 <template>
-    geographie
-    <img :src="flag"></img>
-    <img :src="forme"></img>
-
+    geographie 2
+    <img :src="flag">
     <br>
-    {{ latitude }} {{ longitude }}
+    <div v-if="reponse!=''">
+    votre réponse : {{ reponse }}
+    <br>
+    la bonne réponse : {{ pays }}
+    </div>
+    
+    
 
+    <Response @response="checkresponse"></Response>
 </template>
 
 <style scoped>
