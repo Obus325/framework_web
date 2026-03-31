@@ -1,8 +1,8 @@
 <script setup>
 import { computed, ref, defineEmits } from 'vue';
 import { usePointsStore } from '@/store';
-import APIFacts from '@/Axios/AxiosGeographie';
-import Response from '@/response.vue';
+import APIGeo from '@/Axios/AxiosGeographie';
+import Response from '@/Components/response.vue';
 
 
 const flag = ref()
@@ -17,7 +17,7 @@ const store = usePointsStore();
 const fetch = async () => {
 try {
     console.log("start");
-    const response = await APIFacts.get(`/country-quiz`);
+    const response = await APIGeo.get(`/country-quiz`);
     console.log(response)
     flag.value = response.data.flag
     pays.value = response.data.answer
@@ -44,10 +44,10 @@ fetch();
 </script>
 
 <template>
-    geographie 2
+    <br>
     <img :src="flag">
     <br>
-    <div v-if="reponse!=''">
+    <div v-if="reponse!=''" :class="correct">
     votre réponse : {{ reponse }}
     <br>
     la bonne réponse : {{ pays }}
@@ -60,4 +60,13 @@ fetch();
 
 <style scoped>
 
+.true
+{
+    background-color: green;
+}
+
+.false
+{
+    background-color: red;
+}
 </style>

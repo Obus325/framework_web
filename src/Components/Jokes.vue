@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import APIFacts from '@/Axios/AxiosJokes';
+import APIJokes from '@/Axios/AxiosJokes';
 
     
     const joke = ref()
@@ -8,7 +8,7 @@ import APIFacts from '@/Axios/AxiosJokes';
 
     const fetchJokes = async () => {
     try {
-        const response = await APIFacts.get(`/joke/Any`);
+        const response = await APIJokes.get(`/joke/Any`);
         joke.value = response.data;
         singlepart.value = joke.value.type == "single";
 

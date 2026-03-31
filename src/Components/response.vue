@@ -13,9 +13,8 @@
     {
     let doc = document.getElementById("input");
      doc.disabled = true;
-     //console.log(doc.value)
-     
-     emit('response', doc.value)
+     let data = doc.value.trim() === "" ? "null" : doc.value;
+     emit('response', data)
      
 }
 </script>
