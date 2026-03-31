@@ -1,38 +1,28 @@
 # brain-up
 
-This template should help get you started developing with Vue 3 in Vite.
+l'objectif du projet est de créer un site avec plusieurs pages pour échauffer son cerveau le matin.
 
-## Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+le site possède les pages Facts : donne un fait insolite (1 par jour) et Jokes : affiche une blague aléatoire (1 par chargement). en lectures seules afin d'égayer la matinée
 
-## Recommended Browser Setup
+Egalement, pour travailler sa culture, il y a les pages Geo : affiche un drapeau aléatoire et quiz : affiche une question de culture générale aléatoire. Ces pages demande un input réponse de l'utilisateur puis affiche ensuite la réponse attendue.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+le nombre de bonnes réponses est conservé pour afficher au joueur
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Difficultés
+
+Les API disponibles sur le net sont assez difficiles d'approches ou incomplètes pour des questions aléatoires de culture.
+Pour garder de la qualité, le nombre de pages différentes à été réduit
+
+Les points sont réinitialisés à la sortie du site
+
+## Améliorations 
+
+Proposer de nouvelles pages
+Conserver les points sur la durée
 
 ## Project Setup
 
-```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
